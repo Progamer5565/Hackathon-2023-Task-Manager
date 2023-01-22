@@ -1,7 +1,6 @@
 import tkinter as tk
 from datetime import datetime
 
-# THE DICTIONARY
 tasks = {}
 
 def start_task(task_name):
