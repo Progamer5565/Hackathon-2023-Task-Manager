@@ -1,0 +1,32 @@
+import tkinter as tk
+from tkinter import messagebox
+from datetime import datetime, timedelta
+import time
+
+def create_reminder():
+    task = task_entry.get()
+    date = datetime.strptime(date_entry.get(), '%Y-%m-%d %H:%M')
+    messagebox.showinfo("Reminder Set", f"Reminder for {task} set for {date}")
+    time_until_reminder = (date - datetime.now()).total_seconds()
+    time.sleep(time_until_reminder)
+    messagebox.showinfo("Reminder", task)
+
+root = tk.Tk()
+root.title("Task Reminder")
+
+task_label = tk.Label(root, text="Task:")
+task_label.grid(row=0, column=0)
+
+task_entry = tk.Entry(root)
+task_entry.grid(row=0, column=1)
+
+date_label = tk.Label(root, text="Date and Time (YYYY-MM-DD HH:MM):")
+date_label.grid(row=1, column=0)
+
+date_entry = tk.Entry(root)
+date_entry.grid(row=1, column=1)
+
+reminder_button = tk.Button(root, text="Create Reminder", command=create_reminder)
+reminder_button.grid(row=2, column=0, columnspan=2)
+
+root.mainloop()
